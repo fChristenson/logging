@@ -9,10 +9,20 @@ services:
       - ./test.log:/app/test.log
   fluent:
     depends_on:
-      - db
+      - elasticsearch
     image: logger
     volumes:
       - ./test.log:/test.log
       - ./fluent.conf:/fluentd/etc/fluent.conf
-  db:
-    image: mongo
+  elasticsearch:
+    image: elasticsearch:7.10.1
+    ports:
+      - 9200:9200
+    environment:
+      - "discovery.type=single-node"
+  kibana:
+    depends_on:
+      - elasticsearch
+    image: kibana:7.10.1
+    ports:
+      - 5601:5601
