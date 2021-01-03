@@ -14,7 +14,7 @@ services:
       context: .
       dockerfile: Dockerfile.fluent
     volumes:
-      - ./logs:/logs
+      - ./logs:/var/log
       - ./fluent.conf:/fluentd/etc/fluent.conf
   elasticsearch:
     image: elasticsearch:7.10.1
