@@ -2,17 +2,19 @@ version: "3"
 
 services:
   logging:
-    image: logging
+    build: .
+    volumes:
+      - ./logs:/app/logs
     ports:
       - 3000:3000
-    volumes:
-      - ./test.log:/app/test.log
   fluent:
     depends_on:
       - elasticsearch
-    image: logger
+    build:
+      context: .
+      dockerfile: Dockerfile.fluent
     volumes:
-      - ./test.log:/test.log
+      - ./logs:/logs
       - ./fluent.conf:/fluentd/etc/fluent.conf
   elasticsearch:
     image: elasticsearch:7.10.1

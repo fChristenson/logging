@@ -13,7 +13,7 @@ const logger = bunyan.createLogger({
     },
     {
       level: "info",
-      path: path.join(__dirname, "..", "test.log"),
+      path: path.join(__dirname, "..", "logs", "logging-app.log"),
     },
   ],
 });
