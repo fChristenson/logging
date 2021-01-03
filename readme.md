@@ -1,4 +1,4 @@
-# Distributed logging side cart
+# Distributed logging
 
 ## The problem
 
