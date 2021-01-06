@@ -1,6 +1,7 @@
 import express from "express";
 import bunyan from "bunyan";
 import path from "path";
+import os from "os";
 
 export const app = express();
 
@@ -13,7 +14,7 @@ const logger = bunyan.createLogger({
     },
     {
       level: "info",
-      path: path.join(__dirname, "..", "logs", "logging-app.log"),
+      path: path.join(__dirname, "..", "logs", `logging-app-${os.hostname()}.log`),
     },
   ],
 });
